@@ -11463,22 +11463,20 @@ void RtApi ::convertBuffer(char *outBuffer, char *inBuffer, ConvertInfo &info) {
       }
     } else if (info.inFormat == RTAUDIO_FLOAT32) {
       Float32 *in = (Float32 *)inBuffer;
-      for (unsigned int i = 0; i < stream_.bufferSize; i++) {
-        for (j = 0; j < info.channels; j++) {
+      for (unsigned int i=0; i<stream_.bufferSize; i++) {
+        for (j=0; j<info.channels; j++) {
           long long value = in[info.inOffset[j]] * 2147483648LL;
-          out[info.outOffset[j]] =
-              std::max(-2147483648LL, std::min(value, 2147483647LL));
+          out[info.outOffset[j]] = std::max(-2147483648LL, std::min(value, 2147483647LL));
         }
         in += info.inJump;
         out += info.outJump;
       }
     } else if (info.inFormat == RTAUDIO_FLOAT64) {
       Float64 *in = (Float64 *)inBuffer;
-      for (unsigned int i = 0; i < stream_.bufferSize; i++) {
-        for (j = 0; j < info.channels; j++) {
+      for (unsigned int i=0; i<stream_.bufferSize; i++) {
+        for (j=0; j<info.channels; j++) {
           long long value = in[info.inOffset[j]] * 2147483648LL;
-          out[info.outOffset[j]] =
-              std::max(-2147483648LL, std::min(value, 2147483647LL));
+          out[info.outOffset[j]] = std::max(-2147483648LL, std::min(value, 2147483647LL));
         }
         in += info.inJump;
         out += info.outJump;
@@ -11528,8 +11526,8 @@ void RtApi ::convertBuffer(char *outBuffer, char *inBuffer, ConvertInfo &info) {
       }
     } else if (info.inFormat == RTAUDIO_FLOAT32) {
       Float32 *in = (Float32 *)inBuffer;
-      for (unsigned int i = 0; i < stream_.bufferSize; i++) {
-        for (j = 0; j < info.channels; j++) {
+      for (unsigned int i=0; i<stream_.bufferSize; i++) {
+        for (j=0; j<info.channels; j++) {
           Int32 value = in[info.inOffset[j]] * 8388608;
           out[info.outOffset[j]] = std::max(-8388608, std::min(value, 8388607));
         }
@@ -11538,8 +11536,8 @@ void RtApi ::convertBuffer(char *outBuffer, char *inBuffer, ConvertInfo &info) {
       }
     } else if (info.inFormat == RTAUDIO_FLOAT64) {
       Float64 *in = (Float64 *)inBuffer;
-      for (unsigned int i = 0; i < stream_.bufferSize; i++) {
-        for (j = 0; j < info.channels; j++) {
+      for (unsigned int i=0; i<stream_.bufferSize; i++) {
+        for (j=0; j<info.channels; j++) {
           Int32 value = in[info.inOffset[j]] * 8388608;
           out[info.outOffset[j]] = std::max(-8388608, std::min(value, 8388607));
         }
@@ -11590,8 +11588,8 @@ void RtApi ::convertBuffer(char *outBuffer, char *inBuffer, ConvertInfo &info) {
       }
     } else if (info.inFormat == RTAUDIO_FLOAT32) {
       Float32 *in = (Float32 *)inBuffer;
-      for (unsigned int i = 0; i < stream_.bufferSize; i++) {
-        for (j = 0; j < info.channels; j++) {
+      for (unsigned int i=0; i<stream_.bufferSize; i++) {
+        for (j=0; j<info.channels; j++) {
           Int32 value = in[info.inOffset[j]] * 32768;
           out[info.outOffset[j]] = std::max(-32768, std::min(value, 32767));
         }
@@ -11602,6 +11600,8 @@ void RtApi ::convertBuffer(char *outBuffer, char *inBuffer, ConvertInfo &info) {
       Float64 *in = (Float64 *)inBuffer;
       for (unsigned int i = 0; i < stream_.bufferSize; i++) {
         for (j = 0; j < info.channels; j++) {
+      for (unsigned int i=0; i<stream_.bufferSize; i++) {
+        for (j=0; j<info.channels; j++) {
           Int32 value = in[info.inOffset[j]] * 32768;
           out[info.outOffset[j]] = std::max(-32768, std::min(value, 32767));
         }
@@ -11654,8 +11654,8 @@ void RtApi ::convertBuffer(char *outBuffer, char *inBuffer, ConvertInfo &info) {
       }
     } else if (info.inFormat == RTAUDIO_FLOAT32) {
       Float32 *in = (Float32 *)inBuffer;
-      for (unsigned int i = 0; i < stream_.bufferSize; i++) {
-        for (j = 0; j < info.channels; j++) {
+      for (unsigned int i=0; i<stream_.bufferSize; i++) {
+        for (j=0; j<info.channels; j++) {
           Int32 value = in[info.inOffset[j]] * 128;
           out[info.outOffset[j]] = std::max(-128, std::min(value, 127));
         }
@@ -11664,8 +11664,8 @@ void RtApi ::convertBuffer(char *outBuffer, char *inBuffer, ConvertInfo &info) {
       }
     } else if (info.inFormat == RTAUDIO_FLOAT64) {
       Float64 *in = (Float64 *)inBuffer;
-      for (unsigned int i = 0; i < stream_.bufferSize; i++) {
-        for (j = 0; j < info.channels; j++) {
+      for (unsigned int i=0; i<stream_.bufferSize; i++) {
+        for (j=0; j<info.channels; j++) {
           Int32 value = in[info.inOffset[j]] * 128;
           out[info.outOffset[j]] = std::max(-128, std::min(value, 127));
         }
