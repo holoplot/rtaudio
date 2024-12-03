@@ -58,6 +58,13 @@ option(RTAUDIO_API_PULSE "Build PulseAudio API" ${pulse_FOUND})
 option(RTAUDIO_API_JACK "Build JACK audio server API" ${HAVE_JACK})
 option(RTAUDIO_API_CORE "Build CoreAudio API" ${APPLE})
 
+# String encoding
+option(RTAUDIO_UNICODE "Request UTF-8 encoded strings from system calls" OFF)
+
+if (RTAUDIO_UNICODE)
+    add_definitions(-DUNICODE)
+endif ()
+
 # Check for functions
 include(CheckFunctionExists)
 check_function_exists(gettimeofday HAVE_GETTIMEOFDAY)

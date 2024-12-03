@@ -11210,8 +11210,8 @@ void RtApi :: convertBuffer( char *outBuffer, char *inBuffer, ConvertInfo &info 
       Float32 *in = (Float32 *)inBuffer;
       for (unsigned int i=0; i<stream_.bufferSize; i++) {
         for (j=0; j<info.channels; j++) {
-          // Use llround() which returns `long long` which is guaranteed to be at least 64 bits.
-          out[info.outOffset[j]] = (Int32) std::max(std::min(std::llround(in[info.inOffset[j]] * 2147483648.f), 2147483647LL), -2147483648LL);
+          long long value = in[info.inOffset[j]] * 2147483648LL;
+          out[info.outOffset[j]] = std::max(-2147483648LL, std::min(value, 2147483647LL));
         }
         in += info.inJump;
         out += info.outJump;
@@ -11221,7 +11221,8 @@ void RtApi :: convertBuffer( char *outBuffer, char *inBuffer, ConvertInfo &info 
       Float64 *in = (Float64 *)inBuffer;
       for (unsigned int i=0; i<stream_.bufferSize; i++) {
         for (j=0; j<info.channels; j++) {
-          out[info.outOffset[j]] = (Int32) std::max(std::min(std::llround(in[info.inOffset[j]] * 2147483648.0), 2147483647LL), -2147483648LL);
+          long long value = in[info.inOffset[j]] * 2147483648LL;
+          out[info.outOffset[j]] = std::max(-2147483648LL, std::min(value, 2147483647LL));
         }
         in += info.inJump;
         out += info.outJump;
@@ -11278,7 +11279,8 @@ void RtApi :: convertBuffer( char *outBuffer, char *inBuffer, ConvertInfo &info 
       Float32 *in = (Float32 *)inBuffer;
       for (unsigned int i=0; i<stream_.bufferSize; i++) {
         for (j=0; j<info.channels; j++) {
-          out[info.outOffset[j]] = (Int32) std::max(std::min(std::llround(in[info.inOffset[j]] * 8388608.f), 8388607LL), -8388608LL);
+          Int32 value = in[info.inOffset[j]] * 8388608;
+          out[info.outOffset[j]] = std::max(-8388608, std::min(value, 8388607));
         }
         in += info.inJump;
         out += info.outJump;
@@ -11288,7 +11290,8 @@ void RtApi :: convertBuffer( char *outBuffer, char *inBuffer, ConvertInfo &info 
       Float64 *in = (Float64 *)inBuffer;
       for (unsigned int i=0; i<stream_.bufferSize; i++) {
         for (j=0; j<info.channels; j++) {
-          out[info.outOffset[j]] = (Int32) std::max(std::min(std::llround(in[info.inOffset[j]] * 8388608.0), 8388607LL), -8388608LL);
+          Int32 value = in[info.inOffset[j]] * 8388608;
+          out[info.outOffset[j]] = std::max(-8388608, std::min(value, 8388607));
         }
         in += info.inJump;
         out += info.outJump;
@@ -11343,7 +11346,8 @@ void RtApi :: convertBuffer( char *outBuffer, char *inBuffer, ConvertInfo &info 
       Float32 *in = (Float32 *)inBuffer;
       for (unsigned int i=0; i<stream_.bufferSize; i++) {
         for (j=0; j<info.channels; j++) {
-          out[info.outOffset[j]] = (Int16) std::max(std::min(std::llround(in[info.inOffset[j]] * 32768.f), 32767LL), -32768LL);
+          Int32 value = in[info.inOffset[j]] * 32768;
+          out[info.outOffset[j]] = std::max(-32768, std::min(value, 32767));
         }
         in += info.inJump;
         out += info.outJump;
@@ -11353,7 +11357,8 @@ void RtApi :: convertBuffer( char *outBuffer, char *inBuffer, ConvertInfo &info 
       Float64 *in = (Float64 *)inBuffer;
       for (unsigned int i=0; i<stream_.bufferSize; i++) {
         for (j=0; j<info.channels; j++) {
-          out[info.outOffset[j]] = (Int16) std::max(std::min(std::llround(in[info.inOffset[j]] * 32768.0), 32767LL), -32768LL);
+          Int32 value = in[info.inOffset[j]] * 32768;
+          out[info.outOffset[j]] = std::max(-32768, std::min(value, 32767));
         }
         in += info.inJump;
         out += info.outJump;
@@ -11407,7 +11412,8 @@ void RtApi :: convertBuffer( char *outBuffer, char *inBuffer, ConvertInfo &info 
       Float32 *in = (Float32 *)inBuffer;
       for (unsigned int i=0; i<stream_.bufferSize; i++) {
         for (j=0; j<info.channels; j++) {
-          out[info.outOffset[j]] = (signed char) std::max(std::min(std::llround(in[info.inOffset[j]] * 128.f), 127LL), -128LL);
+          Int32 value = in[info.inOffset[j]] * 128;
+          out[info.outOffset[j]] = std::max(-128, std::min(value, 127));
         }
         in += info.inJump;
         out += info.outJump;
@@ -11417,7 +11423,8 @@ void RtApi :: convertBuffer( char *outBuffer, char *inBuffer, ConvertInfo &info 
       Float64 *in = (Float64 *)inBuffer;
       for (unsigned int i=0; i<stream_.bufferSize; i++) {
         for (j=0; j<info.channels; j++) {
-          out[info.outOffset[j]] = (signed char) std::max(std::min(std::llround(in[info.inOffset[j]] * 128.0), 127LL), -128LL);
+          Int32 value = in[info.inOffset[j]] * 128;
+          out[info.outOffset[j]] = std::max(-128, std::min(value, 127));
         }
         in += info.inJump;
         out += info.outJump;
